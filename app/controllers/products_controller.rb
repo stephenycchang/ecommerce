@@ -19,6 +19,7 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
 
     if @product.save
+      render :index
     else
       render :new
     end
@@ -28,7 +29,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
 
     if @product.update_attributes(product_params)
-      
+      render :edit
     else
       render :edit
     end
