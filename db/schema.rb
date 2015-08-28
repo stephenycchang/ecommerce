@@ -11,7 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150826011554) do
+ActiveRecord::Schema.define(version: 20150828031735) do
+
+  create_table "carts", force: :cascade do |t|
+    t.integer  "product_id", limit: 4
+    t.integer  "order_id",   limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer  "cart_id",    limit: 4
+    t.integer  "user_id",    limit: 4
+    t.boolean  "completed"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
 
   create_table "products", force: :cascade do |t|
     t.string   "name",        limit: 255
